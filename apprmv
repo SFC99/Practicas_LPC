@@ -1,0 +1,28 @@
+#!/bin/bash
+
+
+echo "Script para eliminar programas"
+echo "¿Cual programa deseas borrar? "
+read app
+
+echo "¿Deseas eliminar archivos asociados a la app? S/N"
+read opc
+
+function removeApp {
+	sudo apt-get remove $app
+}
+
+function rmvAppArch {
+	sudo apt-get purge $app
+}
+
+if [ opc=="S" ]
+then
+	rmvAppArch
+elif [ opc=="N" ]
+then 
+	removeApp
+else
+	echo "Opcion invalida"
+fi
+	
